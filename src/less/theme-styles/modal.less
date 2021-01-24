@@ -1,0 +1,50 @@
+.modal-content {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.3);
+}
+
+.modal-body {
+  .col-xs-6 {
+    &:first-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.modal-header {
+  background-color: @my-color-0;
+  color: @my-color-4;
+  border: 0;
+  padding: 10px 15px;
+  
+  .close {
+    color: @my-color-4;
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.modal-footer {
+  border: 0;
+  
+  .btn {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .btn-default {
+    color: @navbar-default-color;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  .modal-dialog {
+    margin: (@navbar-height + 10) auto;
+  }
+}

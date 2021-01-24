@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>similarity texter | A text-comparison web tool</title>
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        <link rel="stylesheet" href="assets/css/styles.min.css">
+    </head>
+    <body>
+        <div class="loader hidden-print">
+            <i class="fa fa-spinner fa-pulse fa-4x"></i>
+        </div>
+        
+        <!-- ALERTS PANEL -->
+        <div id="alerts-panel" class="hidden-print"></div>
+        
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-default navbar-fixed-top hidden-print">
+            <div class="container-fluid">
+
+                <div class="pull-left">
+                    <div class="navbar-header hidden-xs">
+                        <a class="navbar-brand" href="app.html" data-toggle="tooltip" title="Home">
+                        	<h3>similarity texter</h3>
+                        	<h5>A text-comparison tool</h5>
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a id="settings-sidebar-lnk" href="#" data-toggle="tooltip" title="Settings">
+                                <i class="fa fa-cogs fa-2x"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pull-right">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id="input-lnk" href="#" data-toggle="tooltip" title="Toggle input panel">
+                                <i class="fa fa-files-o fa-2x"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="documentation.html" data-toggle="tooltip" title="Documentation" target="_blank">
+                                <i class="fa fa-info fa-2x"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        
+        <!-- SETTINGS SIDEBAR -->
+        <aside id="settings-sidebar" class="sidebar left hidden-print">
+            <!-- Sidebar Header -->
+            <div class="panel sidebar-header">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-cogs fa-2x"></i>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Settings</h4>
+                            <div class="media-subheading">Comparison & Input Reading Options</div>
+                        </div>
+                    </div>
+                </div>
+            </div>  <!-- end Sidebar Header -->
+
+            <!-- Sidebar Accordion -->
+            <div id="settings-sidebar-accordion" class="panel-group sidebar-accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div id="comparison-options-heading" class="panel-heading" role="tab">
+                        <h4 class="panel-title active">
+                            <a role="button" data-toggle="collapse" 
+                                href="#comparison-options-pane" aria-expanded="true"
+                                aria-controls="comparison-options-pane">Comparison Options</a>
+                        </h4>
+                    </div>
+                    <div id="comparison-options-pane" class="panel-collapse collapse in"
+                        role="tabpanel" aria-labelledby="comparison-options-heading">
+                        <div class="panel-body">
+                            <!-- Options-->
+                            <div class="form-group form-group-sm">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="ignore-letter-case" checked="checked" autocomplete="off"/>
+                                    <label for="ignore-letter-case">Ignore letter case</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="ignore-numbers" autocomplete="off"/>
+                                    <label for="ignore-numbers">Ignore numbers</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="ignore-punctuation" checked="checked" autocomplete="off"/>
+                                    <label for="ignore-punctuation">Ignore punctuation</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="replace-umlaut" checked="checked" autocomplete="off"/>
+                                    <label for="replace-umlaut">Replace umlaut & ligatures</label>
+                                </div>
+                            </div>
+                            <!-- end Options -->
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div id="input-options-heading" class="panel-heading" role="tab">
+                        <h4 class="panel-title active">
+                            <a class="collapsed" role="button" data-toggle="collapse" 
+                            href="#input-options-pane" aria-expanded="false" 
+                            aria-controls="input-options-pane">Input Reading Options</a>
+                        </h4>
+                    </div>
+                    <div id="input-options-pane" class="panel-collapse collapse in"
+                        role="tabpanel" aria-labelledby="input-options-heading">
+                        <div class="panel-body">
+                            <div class="form-group form-group-sm">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="ignore-footnotes" autocomplete="off"/>
+                                    <label for="ignore-footnotes">Ignore footnotes in DOCX/ODT files</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end Sidebar Accordion -->
+            
+            <footer>
+                <p>
+                    Based on Dick Grune's <a href="http://dickgrune.com/Programs/similarity_tester/" target="_blank">sim_text</a> algorithm.<br />
+                    Licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons BY-NC-SA 4.0 International License</a>.<br />
+                    Copyright &copy; 2016 <a href="mailto:sokalaid@gmail.com">Sofia Kalaidopoulou</a>.
+                </p>
+            </footer>
+        </aside>
+        
+        <main id="content-wrapper">
+			<!-- INPUT PANEL -->
+            <section id="input-panel" class="container-fluid expanded hidden-print">
+                <div class="row">
+                    <!-- Input header -->
+                    <div class="col-xs-12 card-heading">
+                        <div class="card-title"><h4>Input</h4></div>
+                        <div class="card-actions">
+                            <div class="btn-group" role="group">
+                                <div id="min-match-length-spinner" class="input-group input-group-sm spinner">
+                                    <input id="min-match-length" type="text" class="form-control" autocomplete="off" data-toggle="tooltip" title="Minimum match length" />
+                                    <div class="input-group-addon">
+                                        <button class="btn btn-sm plus" type="button">
+                                            <i class="fa fa-caret-up"></i>
+                                        </button>
+                                        <button class="btn btn-sm minus" type="button">
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" id="compare-btn" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Compare input">
+                                    COMPARE
+                                </button>
+                            </div>
+                        </div>
+                    </div>  <!-- end Input header -->
+                    
+                    <!-- Input Pane 1 -->
+                    <div id="input-pane-1" class="col-xs-6 input-pane">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="card-title">
+                                    <!-- Navigation tabs -->
+                                    <ul class="nav nav-pills" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="#tab-file-1" aria-controls="tab-file-1" role="tab" data-toggle="tab">File</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#tab-text-1" aria-controls="tab-text-1" role="tab" data-toggle="tab">Text</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+    
+                            <div class="card-body">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <!-- TAB: File 1 -->
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-file-1">
+                                        <div class="form-group form-group-sm apply-error">
+                                            <label for="input-file-1" class="required">1: File</label>
+                                            <input id="input-file-1" type="file" accept=".docx, .odt, .txt" />
+                                            <i class="fa fa-spinner fa-pulse form-control-feedback hidden"></i>
+                                            <i class="fa fa-check form-control-feedback hidden"></i>
+                                            <i class="fa fa-times form-control-feedback hidden"></i>
+                                        </div>
+                                    </div>
+                                    <!-- TAB: Text 1 -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-text-1">
+                                        <div class="form-group form-group-sm option">
+                                          <div class="checkbox">
+                                            <input type="checkbox" id="html-text-1" autocomplete="off"/>
+                                            <label for="html-text-1">HTML</label>
+                                          </div>
+                                        </div>
+                                        <div class="form-group form-group-sm apply-error">
+                                            <label for="input-text-1" class="required">1: Text</label>
+                                            <textarea id="input-text-1" class="form-control" rows="10" autocomplete="off" placeholder="Type or paste some text"></textarea>
+                                        </div>
+                                    </div>
+                                </div>  <!-- end Tab panes -->
+                            </div>  <!-- end card-body -->
+                        </div>  <!-- end card -->
+                    </div>  <!-- end Input Pane 1 -->
+    
+                    <!-- Input Pane 2 -->
+                    <div id="input-pane-2" class="col-xs-6 input-pane">
+                        <div class="card">
+                            <div class="card-heading">
+                                <div class="card-title">
+                                    <!-- Navigation tabs -->
+                                    <ul class="nav nav-pills" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="#tab-file-2" aria-controls="tab-file-2" role="tab" data-toggle="tab">File</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#tab-text-2" aria-controls="tab-text-2" role="tab" data-toggle="tab">Text</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+    
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-file-2">
+                                        <!-- TAB: File 2 -->
+                                        <div class="form-group form-group-sm apply-error">
+                                            <label for="input-file-2" class="required">2: File</label>
+                                            <input id="input-file-2" type="file" accept=".docx, .odt, .txt" />
+                                            <i class="fa fa-spinner fa-pulse form-control-feedback hidden"></i>
+                                            <i class="fa fa-check form-control-feedback hidden"></i>
+                                            <i class="fa fa-times form-control-feedback hidden"></i>
+                                        </div>
+                                    </div>
+                                    <!-- TAB: Text 2 -->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-text-2">
+                                        <div class="form-group form-group-sm option">
+                                          <div class="checkbox">
+                                            <input type="checkbox" id="html-text-2" autocomplete="off"/>
+                                            <label for="html-text-2">HTML</label>
+                                          </div>
+                                        </div>
+                                        <div class="form-group form-group-sm apply-error">
+                                            <label for="input-text-2" class="required">2: Text</label>
+                                            <textarea id="input-text-2" class="form-control" rows="10" autocomplete="off" placeholder="Type or paste some text"></textarea>
+                                        </div>
+                                    </div>
+                                </div>  <!-- end Navigation tabs -->
+                            </div>  <!-- end card-body -->
+                        </div>  <!-- end card -->
+                    </div>  <!-- end Input Pane 2 -->
+                </div>  <!-- end row -->
+            </section>  <!-- end INPUT PANEL -->
+			
+           	<!-- OUTPUT PANEL -->
+           	<section id="output-panel" class="container-fluid invisible">
+				<div class="row">
+				    <!-- Print summary -->
+				    <div id="print-summary" class="col-xs-12"></div>
+				    
+				    <!-- Output header -->
+                    <div class="col-xs-12 card-heading">
+                        <div class="card-title hidden-print"><h4>Output</h4></div>
+                        <div id="print-header" class="card-title"><h4>Comparison Output</h4></div>
+                        <div class="card-actions hidden-print">
+                            <div class="btn-group">
+                                <button id="print-btn" type="button" class="btn btn-plain-icon" data-toggle="modal" data-target="#modal-print" rel="tooltip" data-original-title="Print output">
+                                    <i class="fa fa-print"></i>
+                                </button>
+                                <button id="statistics-btn" type="button" class="btn btn-plain-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" rel="tooltip" data-original-title="Statistics">
+                                    <i class="fa fa-line-chart"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <div id="statistics"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  <!-- end Output header -->
+				    
+					<!-- Output Pane 1 -->
+					<div id="output-pane-1" class="col-xs-6">
+						<div class="card">
+              <div id="output-title-1">
+                  <p><b>FILE:</b></p>
+              </div>
+							<!-- Comparison output 1 -->
+							<div id="comparison-output-1" class="card-body">
+							  <div class="comparison-output-container"></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Output Pane 2 -->
+					<div id="output-pane-2" class="col-xs-6">
+						<div class="card">
+              <div id="output-title-2">
+                  <p><b>FILE:</b></p>
+              </div>
+							<!-- Comparison output 2 -->
+							<div id="comparison-output-2" class="card-body">
+							  <div class="comparison-output-container"></div>
+							</div>
+						</div>
+					</div>
+				</div>	<!-- end row -->
+            </section>	<!-- end OUTPUT PANEL -->
+        </main>
+
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="assets/js/lib/jquery/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="assets/js/lib/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/js/lib/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+        <script type="text/javascript" src="assets/js/lib/jszip/jszip.min.js"></script>
+        <script type="text/javascript" src="assets/js/lib/xregexp/xregexp-all-min.js"></script>
+        <script type="text/javascript" src="assets/js/app.min.js"></script>
+    </body>
+</html>

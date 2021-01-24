@@ -1,0 +1,133 @@
+.sidebar {
+	background-color: @my-color-4;
+	height: 100%;
+	position: fixed;
+	top: @navbar-height + 1;
+	width: @my-sidebar-width;
+	z-index: 9999;
+	
+	&.left {
+		border-right: 1px solid @navbar-default-border;
+		left: -@my-sidebar-width;
+		transition: left 700ms ease 0s;
+		
+		&.expanded {
+			left: 0;
+		}
+	}
+	
+	&.right {
+		border-left: 1px solid @navbar-default-border;
+		right: -@my-sidebar-width + 1px;
+		transition: right 700ms ease 0s;
+		
+		&.expanded {
+			right: 0;
+		}
+	}
+}
+
+.sidebar-header {
+	border: none;
+	border-bottom: 1px solid @navbar-default-border;
+  	margin-bottom: 0;
+  	
+  	.panel-body {
+  		padding-top: 40px;
+  		padding-bottom: 40px;
+  	}
+  	
+  	.media-left,
+  	.media-right{
+  		font-size: 17px;	
+  	}
+  	
+  	.media-body {
+  		.media-heading {
+	  		margin-bottom: 0;
+	  	}
+	  	
+  		.media-subheading {
+  			color: @my-color-0;
+  			font-family: @headings-font-family;
+  			font-size: 12px;
+  		}
+  	}
+}
+
+.sidebar-accordion {
+	// For overflow to work: 
+	// Substract (height of navbar + bottom border of navbar + height of sidebar-header + height of footer) from 100% height 
+	height: calc(100% ~"-" (@navbar-height + 1px + 115px + 63px));
+	margin-bottom: 0;
+	overflow: auto;
+	
+	.panel-group {
+		margin-bottom: 0;
+	}
+	
+	.panel {
+		border: none;
+		box-shadow: none;
+
+		& + .panel {
+			margin-top: 0;
+			
+			> .panel-heading {
+				border-top: none;
+			}
+		}
+	}
+	
+	.panel-default {
+	  font-size: 1.19rem;
+	  
+		> .panel-heading {
+		  background-color: @my-color-2;
+			border-bottom: 1px solid @navbar-default-border;
+			
+			& + .panel-collapse {
+				> .panel-body {
+					border: none;
+				}
+				
+				&.collapse.in {
+					> .panel-body {
+						border-bottom: 1px solid @navbar-default-border;
+					}
+				}
+			}
+			
+			> h4 a:after {
+			  content: '\f0da';
+			  font-family: 'FontAwesome';
+			  float: right;
+			}
+			
+			> h4.active a:after {
+        content: '\f0d7';
+        font-family: 'FontAwesome';
+        float: right;
+      }
+		}
+		
+		&:last-child > .panel-heading + .panel-collapse.collapse.in {
+      > .panel-body {
+        border-bottom: 0;
+      }
+    }
+		
+		.panel-body {
+		  padding: 10px 15px;
+		}
+		
+		.checkbox, .radio {
+		  margin-top: 5px;
+		  margin-bottom: 5px;
+		}
+		
+		.form-group {
+		  margin-top: 0;
+		}
+	}
+}

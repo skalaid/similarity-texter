@@ -1,0 +1,80 @@
+@media print {
+  #content-wrapper{
+    overflow: visible;
+    padding: 0;
+  }
+  
+  #output-panel {
+    font-size: 10px;
+    height: 100%;
+    padding: 0;
+    
+    .row {
+      margin: 0;
+    }
+  }
+  
+  #output-pane-1 {
+    padding-right: 10px;
+  }
+  
+  #output-pane-2 {
+    float: right !important;
+    padding-left: 10px;
+  }
+ 
+  #output-title-1,
+  #output-title-2 {
+    background-color: transparent;
+    border-color: #000;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+  
+  #comparison-output-1,
+  #comparison-output-2 {
+    height: 100% !important;
+    overflow-y: visible;
+    
+    .comparison-output-container {
+      padding: 0;
+      
+       p {
+        padding: 0 !important;
+      }
+    }
+  }
+  
+  #print-summary {
+    .show();
+    page-break-after: always;
+    
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    h6 {
+      margin-top: 4px;
+      margin-bottom: 5px;
+    }
+    
+    .table {
+      margin-bottom: 50px;
+    }
+  }
+  
+  #print-header {
+    .show();
+    
+    h4 {
+      margin: 0;
+    }
+  }
+}
+
+@page {
+  margin-left:  0.5cm;
+  margin-right: 0.5cm;
+  size : portrait;
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+      <title>similarity texter | Documentation</title>
+      <link rel="shortcut icon" href="assets/img/favicon.ico"> 
+      <link rel="stylesheet" href="assets/css/styles.min.css">
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-default navbar-fixed-top no-print">
+            <div class="container-fluid">
+
+                <div class="pull-left">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="app.html" data-toggle="tooltip" title="Home">
+                            <h3>similarity texter</h3>
+                            <h5>A text-comparison tool</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <main id="documentation-wrapper">
+            <!-- DOCUMENTATION PANEL -->
+            <section id="documentation-panel" data-spy="scroll" data-target="#doc-toc" data-offset="20">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="hidden-print col-sm-12 card-heading">
+                            <div class="card-title"><h4>Documentation</h4></div>
+                        </div>
+                        
+                        <div class="col-sm-9 col-xs-12">
+                            <div class="card-body">
+                                <h3 id="overview">Overview</h3>
+                                <p>
+                                    <a href="app.html" target="_blank">similarity texter</a> is a web application that measures, 
+                                    and reports lexical similarities, which are unique (no duplicates), between two input files or texts.
+                                    Its implementation is based on the <a href="http://dickgrune.com/Programs/similarity_tester/" target="_blank">sim_text</a> algorithm, developed by Dick Grune.
+                                </p>
+                                <p>
+                                    <strong>Featured functionalities</strong>
+                                </p>
+                                <ul>
+                                    <li>
+                                        Supports different types of input: DOCX, ODT, TXT files, and HTML/plain text.
+                                    </li>
+                                    <li>
+                                        Provides options for fine-tuning the reading of files, and the comparison process.
+                                    </li>
+                                    <li>
+                                        Supports auto-scrolling to a target match, when clicking on a source match.
+                                    </li>
+                                    <li>
+                                        Generates a PDF report from the comparison output.
+                                    </li>
+                                </ul>
+                                <p>
+                                    <strong>Supported web browsers</strong><br />
+                                    The web application has been tested on Google Chrome (v48.0), Mozilla Firefox (v44.0), and Internet Explorer (v11.0).<br />
+                                    Proper functionality on previous versions and/or other web browsers than those specified cannot be guaranteed.
+                                </p>
+                                
+                                <h3 id="how-to-use">How to use</h3>
+                                <p>
+                                    The use of this web tool can be summarized in the following steps:
+                                </p>
+                                <ol>
+                                   <li>From the <a href="#doc-settings-panel">Settings panel</a>, select the options of your choice.</li> 
+                                   <li>From the <a href="#doc-input-panel">Input panel</a>, set the value of the <strong>Minimum match length</strong>, and provide two input files or texts.
+                                       <br>Start the comparison process by clicking on the <strong>COMPARE</strong> button.</li> 
+                                   <li>Examine the results, displayed in the <a href="#doc-output-panel">Output panel</a>.</li> 
+                                   <li>Generate a PDF report by clicking on the <i class="fa fa-print"></i> button in the <a href="#doc-output-panel">Output panel</a>.</li> 
+                                </ol>
+                                
+                                <h3 id="gui">Graphical User Interface</h3>
+                                
+                                <h4 id="doc-navbar">Navigation bar</h4>
+                                
+                                <p>This panel contains a set of buttons, which show/hide different parts of the GUI.</p>
+                                <p><img alt="Navigation bar" class="img-responsive" src="assets/img/gui_navbar.png"></p>
+                                <ul>
+                                    <li>The <i class="fa fa fa-cogs"></i> button toggles the <a href="#doc-settings-panel">Settings panel</a>.</li>
+                                    <li>The <i class="fa fa-files-o"></i> button toggles the <a href="#doc-input-panel">Input panel</a>.</li>
+                                    <li>The <i class="fa fa-info"></i> button opens the documentation page of <a href="app.html" target="_blank">similarity texter</a> in a new tab.</li>
+                                </ul>
+                                
+                                <h4 id="doc-settings-panel">Settings panel</h4>
+                                <p>
+                                    This panel provides a set of options related to the reading of files, and the comparison process.<br> 
+                                    When you select/change an option, its new value is saved in your web browser's local storage.
+                                    So, you don't have to set it once more, if you refresh the page or restart your web browser.
+                                </p>
+                                <p>
+                                  <img alt="Settings panel" class="img-responsive pull-right" src="assets/img/gui_settings-panel.png">
+                                </p>
+                                <p>
+                                  <strong>Comparison options</strong>
+                                  <br>
+                                  These options determine the way in which comparison is performed.
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <strong>Ignore letter case</strong>
+                                            <br>
+                                            When checked, the letter case of the input is not taken into account during comparison, i.e. all input is converted to lowercase.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>Ignore numbers</strong>
+                                            <br>
+                                            When checked, numbers are not taken into account during comparison, i.e. they are deleted from input.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>Ignore punctuation</strong>
+                                            <br>
+                                            When checked, the following punctuation characters/symbols are not taken into account during comparison, i.e. they are deleted from input.
+                                        </p>
+                                        <pre><code>\x21-\x23\x25-\\x2A\x2C-\x2F\x3A\x3B\\x3F\x40\\x5B-\\x5D\x5F\\x7B\x7D\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u0AF0\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E42\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65</code></pre>
+                                    </li>
+                                </ul>
+                                                                
+
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <strong>Replace umlaut &amp; ligatures</strong>
+                                            <br>
+                                            When checked, the following umlauted characters and ligatures are replaced by their equivalent expanded versions during comparison.
+                                        </p>
+                                        <table class="table table-condensed" style="max-width: 300px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Character</th>
+                                                    <th>Replaced by</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>&auml;, &#230;</td>
+                                                    <td>ae</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&ouml;, &#339;</td>
+                                                    <td>oe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&uuml;</td>
+                                                    <td>ue</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&szlig;</td>
+                                                    <td>ss</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                </ul>
+                                
+                                <p>
+                                    <strong>Input reading options</strong>
+                                    <br>
+                                    These options determine the way in which reading of files is performed.
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>Ignore footnotes in DOCX/ODT files</strong>
+                                        <br>
+                                        When checked, the footnotes or endnotes of a document (i.e. DOCX and ODT file format) are not parsed, i.e. they are excluded from input.
+                                    </li>
+                                </ul>
+                                
+                                <h4 id="doc-input-panel">Input panel</h4>
+                                <p>
+                                    This panel provides two input panes, one for each input.<br /> 
+                                    Users are allowed to provide different type of input in the source and the target pane.
+                                </p>
+                                <p><img alt="Input panel" class="img-responsive" src="assets/img/gui_input-panel.png"></p>
+                                
+                                <p>
+                                    For <strong>file input</strong>, click on the tab <strong>FILE</strong>, 
+                                    and select a file from your local directory by pressing the <strong>Browse file</strong> button.<br /> 
+                                    The file formats, currently supported are: DOCX, ODT, and TXT.<br />
+                                </p>
+                                <p>
+                                    For <strong>text input</strong>, click on the tab <strong>TEXT</strong>, and type or paste some plain/HTML text.<br />
+                                    If the provided input is HTML, please check the <strong>HTML</strong> checkbox. Otherwise, leave it unchecked.
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>Minimum match length</strong> spinner<br>
+                                        Sets the minimum number of words that constitute a match.
+                                    </li>
+                                    <li>
+                                        <strong>COMPARE</strong> button<br>
+                                        Starts the comparison process.
+                                    </li>
+                                </ul>
+                                
+                                <h4 id="doc-output-panel">Output panel</h4>
+                                <p>
+                                    This panel displays the output of the comparison process.<br>
+                                    The left-side and right-side panes show the contents of the source and the target input respectively, together with any matches found.<br> 
+                                    Matches are highlighted in different background colors. 
+                                    However, the same background color is used for highlighting the same longest common substring found in the source and the target input.<br />
+                                    Overlapping matches are surrounded by a dashed border.  
+                                </p>
+                                <p><img alt="Output panel" class="img-responsive" src="assets/img/gui_output-panel.png"></p>
+                                
+                                <h5 id="auto-scrolling">Auto-scrolling to target match</h5>
+                                <p>
+                                    Click on a highlighted match (in either output panes) to trigger auto-scrolling to the corresponding reference match on the other pane.
+                                    <br>
+                                    Both matches are aligned at the same level in order to provide a better overview of their content.
+                                </p>
+                                
+                                <h5 id="display-statistics">Display statistics</h5>
+                                <p>
+                                    To display statistical data on the input, click on the <i class="fa fa-line-chart"></i> button.
+                                </p>
+                                
+                                <h5 id="generate-pdf-report">Generate PDF report</h5>
+                                <p>
+                                    To generate a PDF report from the contents of the comparison output, follow the steps below:
+                                </p>
+                                <ol style="margin-bottom: 0;">
+                                    <li>Click on the <i class="fa fa-print"></i> button.</li>
+                                    <li>
+                                        The <strong>PRINT OUTPUT</strong> dialog is displayed, where you can provide a comment, for each input, to be included in the generated PDF report.<br>
+                                        Press the <strong>PRINT</strong> button to proceed to printing.<br>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            The system's print dialog is displayed.  
+                                            Please enable the following options for the proper generation of the PDF report:<br>
+                                        </p>
+                                        
+                                        <div class="row">
+                                          <div class="col-sm-6">
+                                            <p><strong>Chrome's native print dialog</strong></p>
+                                            <img alt="Chrome's native print dialog" src="assets/img/pdf_chrome.png" class="img-responsive"/>
+                                          </div>
+                                          <div class="col-sm-6">
+                                            <p><strong>System's print dialog</strong></p>
+                                            <ul style="margin-bottom: 10px">
+                                                <li>Option <strong>Print to File</strong>, to direct printing to the PDF printer, and</li>
+                                                <li>Option <strong>Print Background Colors</strong>.</li>
+                                            </ul>
+                                            <p><strong>NOTE:</strong> The precise names of the options may vary depending on the operating system.</p>
+                                          </div>
+                                        </div>                                        
+                                    </li>
+                                    <li>Press <strong>Save</strong> (in Chrome) or <strong>Print</strong> (in System) to generate the PDF report.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div id="doc-toc" class="col-sm-3">
+                            <nav class="hidden-print hidden-xs">
+                                <ul class="nav nav-pills nav-stacked affix">
+                                    <li>
+                                        <a href="#overview">Overview</a>
+                                    </li>
+                                    <li>
+                                        <a href="#how-to-use">How to use</a>
+                                    </li>
+                                    <li>
+                                        <a href="#gui">Graphical User Interface</a>
+                                        <ul class="nav nav-pills nav-stacked">
+                                            <li>
+                                                <a href="#doc-navbar">Navigation bar</a>
+                                            </li>
+                                            <li>
+                                                <a href="#doc-settings-panel">Settings panel</a>
+                                            </li>
+                                            <li>
+                                                <a href="#doc-input-panel">Input panel</a>
+                                            </li>
+                                            <li>
+                                                <a href="#doc-output-panel">Output panel</a>
+                                                <ul class="nav nav-pills nav-stacked">
+                                                    <li>
+                                                        <a href="#auto-scrolling">Auto-scrolling to target match</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#display-statistics">Display statistics</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#generate-pdf-report">Generate PDF report</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        
+                    </div>  <!-- end row -->
+                </div>  <!-- end container -->
+            </section>  <!-- end DOCUMENTATION PANEL -->
+        </main>
+
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="assets/js/lib/jquery/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="assets/js/lib/bootstrap/bootstrap.min.js"></script>
+    </body>
+</html>

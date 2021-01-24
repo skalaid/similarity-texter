@@ -1,0 +1,50 @@
+.card {
+	&:extend(.panel all);
+	border: 0;
+	.box-shadow(none);
+	margin-bottom: 0;
+	
+	> .card-heading {
+	  padding-left: 0;
+	  padding-right: 0;
+	}
+}
+
+.card-heading {
+	&:extend(.panel-heading all);
+	border-bottom: 0;
+	display: table;
+	padding-top: 0;
+	padding-bottom: 5px;
+	width: 100%;
+	
+	& + .card-body {
+		padding-top: 0;
+	}
+}
+
+.card-body {
+	&:extend(.panel-body all);
+	background-color: @my-card-body-bg;
+	padding: 20px;
+}
+
+.card-title {
+	&:extend(.panel-title all);
+	color: @gray-light;
+	display: table-cell;
+	font-size: 95%;
+	font-weight: 500;
+	text-transform: uppercase;
+	vertical-align: bottom;
+	
+	h4 {
+		margin: 0 0 1px 0;
+	}
+}
+
+.card-actions {
+	.pull-right();
+	display: table-cell;
+	vertical-align: bottom;
+}

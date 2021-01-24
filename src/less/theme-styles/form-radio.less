@@ -1,0 +1,88 @@
+.radio-variant (@parent , @color) {
+	.@{parent} input[type="radio"] {
+		& + label {
+			&::after {
+				background-color: @color;
+			}
+		}
+
+		&:checked + label {
+			&::before {
+				border-color: @color;
+			}
+
+			&::after {
+				background-color: @color;
+			}
+		}
+	}
+}
+
+.radio {
+	padding-left: 20px;
+	
+	label {
+		display: inline-block;
+		position: relative;
+		padding-left: 3px;
+		
+		&::before {
+			color: @text-color;
+			content: "\f10c";
+			display: inline-block;
+			font-family: 'FontAwesome';
+			font-size: 1.2em;
+			margin-left: -20px;
+			position: absolute;
+			left: 0;
+			top: -1px;
+		}
+
+		&::after {
+			display: inline-block;
+			font-size: 1.2em;
+			margin-left: -20px;
+			position: absolute;
+			left: 0px;
+			top: -1px;
+		}
+	}
+
+	input[type="radio"] {
+		opacity: 0;
+		z-index: 1;
+		
+		&:focus + label::before {
+			.tab-focus();
+			outline: none;
+		}
+
+		&:checked + label::before {
+			content: '';
+		}
+		
+		&:checked + label::after {
+			color: @my-radio-checked-color;
+			content: '\f192';
+			font-family: 'FontAwesome';
+		}
+
+		&:disabled + label {
+			opacity: 0.65;
+			
+			&::before {
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	&.radio-inline {
+		margin-top: 0;
+	}
+}
+
+.radio-variant (radio-primary , @brand-primary);
+.radio-variant (radio-danger , @brand-danger);
+.radio-variant (radio-info , @brand-info);
+.radio-variant (radio-warning , @brand-warning);
+.radio-variant (radio-success , @brand-success);

@@ -1,0 +1,23 @@
+.reset-tab-focus {
+	outline: 0;
+}
+
+.btn, 
+.btn:active, 
+.btn.active,
+.input-group-btn {
+	&:focus, &.focus {
+		&:extend(.reset-tab-focus);
+	}
+}
+
+input[type="file"]:focus, 
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+	&:extend(.reset-tab-focus);
+}
+
+a:focus {
+	&:extend(.reset-tab-focus);
+}
+

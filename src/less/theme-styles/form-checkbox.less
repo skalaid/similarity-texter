@@ -1,0 +1,82 @@
+.checkbox-variant (@parent , @color) {
+	.@{parent} input[type="checkbox"]:checked + label {
+		&::before {
+			background-color: @color;
+			border-color: @color;
+		}
+
+		&::after {
+			color: #fff;
+		}
+	}
+}
+
+.checkbox {
+	padding-left: 20px;
+	
+	label {
+		display: inline-block;
+		position: relative;
+		padding-left: 3px;
+		
+		&::before {
+			color: @text-color;
+			content: "\f096";
+			display: inline-block;
+			font-family: 'FontAwesome';
+			font-size: 1.2em;
+			margin-left: -20px;
+			position: absolute;
+			left: 0;
+			top: -1px;
+		}
+
+		&::after {
+			display: inline-block;
+			font-size: 1.2em;
+			margin-left: -20px;
+			position: absolute;
+			left: 0px;
+			top: -1px;
+		}
+	}
+
+	input[type="checkbox"] {
+		opacity: 0;
+		z-index: 1;
+		
+		&:focus + label::before {
+			.tab-focus();
+			outline: none;
+		}
+
+		&:checked + label::before {
+			content: '';
+		}
+
+		&:checked + label::after {
+			color: @my-checkbox-checked-color;
+			content: '\f046';
+			font-family: 'FontAwesome';
+		}
+
+		&:disabled + label {
+			opacity: 0.65;
+			
+			&::before {
+				background-color: @gray-lighter;
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	&.checkbox-inline {
+		margin-top: 0;
+	}
+}
+
+.checkbox-variant (checkbox-primary , @brand-primary);
+.checkbox-variant (checkbox-danger , @brand-danger);
+.checkbox-variant (checkbox-info , @brand-info);
+.checkbox-variant (checkbox-warning , @brand-warning);
+.checkbox-variant (checkbox-success , @brand-success);

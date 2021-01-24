@@ -1,0 +1,210 @@
+html, body {
+	height: 100%;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+  &.waiting * {
+    cursor: progress;
+  }
+}
+
+#content-wrapper {
+  height: 100%;
+  overflow: hidden;
+  padding-top: @navbar-height + 1;
+  width: 100%;
+}
+
+#input-panel {
+	background-color: @my-color-3;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	left: 0;
+	right: 0;
+	top: -100%;
+	margin-top: @navbar-height + 1;
+	padding: 30px;
+  position: absolute;
+	z-index: 999;
+	transition: top 700ms ease-in-out 0s;
+	
+	&.expanded {
+    top: 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 15px;
+    
+    #input-pane-1, #input-pane-2 {
+      .card-body {
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    
+    #input-pane-1 {
+      padding-right: 7.5px;
+    }
+    
+    #input-pane-2 {
+      padding-left: 7.5px;
+    }
+    
+  }
+  
+  .nav-pills > li:not(.active) > a {
+    color: @my-color-0;
+  }
+}
+
+#output-panel {
+	padding: 30px;
+	
+	@media (max-width: 480px) {
+    padding: 15px;
+    
+    #output-pane-1 {
+      padding-right: 7.5px;
+    }
+    
+    #output-pane-2 {
+      padding-left: 7.5px;
+    }
+	}
+}
+
+#print-summary {
+  .hidden();
+  margin-top: 50px;
+  position: relative;
+  white-space: pre-line;      /* CSS 3.0 */
+ 
+  .table > thead > tr > th {
+    vertical-align: middle;
+  }
+}
+
+#print-header {
+  .hidden();
+}
+
+.dropdown-menu {
+  border: 0;
+  padding: 0;
+  
+  #statistics {
+    font-size: 10.5px;
+    
+    .table {
+      margin: 0;
+    }
+    
+    .table-bordered > thead > tr > th {
+      background-color: @my-color-3;
+      border-bottom-width: 0;
+      max-width: 100px;  
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    
+    .table-bordered > thead > tr > td {
+      border-bottom-width: 0;  
+    }
+    
+    tbody > tr {
+      > th {
+        white-space: nowrap;
+      }
+      > td {
+        text-align: center;
+      }
+    } 
+  }
+}
+
+#output-title-1,
+#output-title-2 {
+  background-color: @my-color-3;
+  border-bottom: 1px solid #E5EFF0;
+  color: @navbar-default-color;
+  font-family: @headings-font-family;
+  padding: 5px 8px;
+  
+  > p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+#comparison-output-1,
+#comparison-output-2 {
+	background: @my-color-4;
+	overflow-y: scroll;
+	padding: 0;
+	
+	.comparison-output-container {
+	  padding: 10px;
+	  
+	  p {
+      margin: 0;
+      white-space: pre;           /* CSS 2.0 */
+      white-space: pre-wrap;      /* CSS 2.1 */
+      white-space: pre-line;      /* CSS 3.0 */
+      white-space: -pre-wrap;     /* Opera 4-6 */
+      white-space: -o-pre-wrap;   /* Opera 7 */
+      white-space: -moz-pre-wrap; /* Mozilla */
+      white-space: -hp-pre-wrap;  /* HP Printers */
+      word-wrap: break-word;      /* IE 5+ */
+      text-align: justify;
+      
+      a {
+        color: @text-color;
+        
+        &:focus, 
+        &:hover {
+          color: @text-color;
+        }
+      }
+    }
+	}
+}
+
+.loader {
+  background: @my-color-0;
+  color: @my-color-4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  padding-top: 50vh;
+  text-align: center;
+  z-index: 9999;
+  
+  &.shrinked {
+    display: none;
+  }
+}
+
+footer {
+  background-color: @my-color-3;
+  border-top: 1px solid @navbar-default-border;
+  bottom: @navbar-height + 1px;
+  font-size: 9.5px;
+  padding: 3px 10px;
+  position: absolute;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.overlapping {
+  border: 1px dashed #777;
+}

@@ -1,0 +1,45 @@
+.spinner {
+	height: 100%;
+	width: 70px;
+	
+	.form-control {
+		height: 30px;
+		padding-top: 0;
+		padding-bottom: 0;
+		text-align: right;
+	}
+	
+	.input-group-addon {
+		height: 30px;
+		padding: 0;
+		
+		> .btn {
+			background-color: @my-color-1;
+			border: 0;
+			border-radius: 0;
+			color: @btn-primary-bg;
+			display: block;
+			height: 14px;
+			line-height: 100%;
+			margin: 0;
+			padding: 0 3px;
+			
+			&.plus {
+				vertical-align: top;
+			}
+			
+			&.minus {
+				vertical-align: bottom;
+			}
+			
+			> .fa {
+				font-size: 1.1em;
+			}
+			
+			&:hover {
+		    	background-color: @btn-primary-bg;
+				color: @my-color-4;
+			}
+		}
+	}
+}
