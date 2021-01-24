@@ -35,3 +35,14 @@ If you need to make changes to the JS source code or to the LESS files, you need
 - For recompiling the web app after each change you make, type instead: ``npm run watch``.
 
 During compilation, the contents of the folder **dist** are replaced with the new compiled ones.
+
+## License
+
+[![CC BY-NC-SA][by-nc-sa-image]][by-nc-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][by-nc-sa].
+
+[by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/
+[by-nc-sa-image]: https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png
+
